@@ -12,10 +12,13 @@
   .wrap { max-width: 640px; margin: 0 auto; }
   .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
   h1 { font-size: 28px; margin: 6px 0 4px; font-weight: 600; }
-  p { color: var(--muted); margin: 0 0 20px; max-width: 52ch; }
-  model-viewer { width: 100%; height: 56vh; min-height: 320px; background: #1a1a1a; border-radius: 12px; }
-  .ar-btn, a.ar-link { display: inline-block; margin-top: 16px; padding: 14px 22px; border-radius: 999px; background: var(--fg); color: #111; font-weight: 600; text-decoration: none; }
-  .hint { font-size: 14px; margin-top: 14px; }
+  h2 { font-size: 18px; margin: 36px 0 6px; font-weight: 600; }
+  p { color: var(--muted); margin: 0 0 16px; max-width: 52ch; }
+  .card { background:#1a1a1a; border-radius: 12px; padding: 18px; margin-top: 12px; }
+  .card img { width: 120px; border-radius: 8px; display:block; margin-bottom: 12px; }
+  a.btn { display: inline-block; padding: 14px 22px; border-radius: 999px; background: var(--fg); color: #111; font-weight: 600; text-decoration: none; }
+  model-viewer { width: 100%; height: 48vh; min-height: 280px; background: #1a1a1a; border-radius: 12px; }
+  .hint { font-size: 14px; }
   .hint b { color: var(--fg); }
   footer { margin-top: 40px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
 </style>
@@ -23,29 +26,26 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="eyebrow">ODX Studio · AR lab · test 01</div>
-  <h1>Colosseum, alive</h1>
-  <p>A tabletop arena with gladiators running and duelling. Tap the button, point the camera at your table, and the arena lands next to the souvenir.</p>
+  <div class="eyebrow">ODX Studio · AR lab · test 02</div>
+  <h1>Gladiators in the souvenir</h1>
+  <p>No placing, no resizing. The file carries a picture of the Colosseum souvenir. Open it, point the iPhone at the souvenir from above, and the gladiators appear inside it at the right size.</p>
 
-  <model-viewer id="mv"
-    src="colosseum.glb"
-    ios-src="colosseum.usdz"
-    ar ar-modes="quick-look scene-viewer webxr"
-    ar-scale="fixed"
-    ar-placement="floor"
-    autoplay
-    camera-controls
-    shadow-intensity="1"
-    exposure="1.1"
-    alt="Animated Colosseum with gladiators">
-    <button slot="ar-button" class="ar-btn">View in your room</button>
-  </model-viewer>
+  <div class="card">
+    <img src="colosseum_souvenir.png" alt="The souvenir the phone looks for">
+    <a class="btn" rel="ar" href="gladiators.usdz">
+      <img src="poster.jpg" alt="" style="display:none">Open on the souvenir (iPhone)
+    </a>
+    <p class="hint" style="margin-top:14px">After it opens, hold the phone about 30 cm above the souvenir, looking down, like the picture. Give it two or three seconds. If nothing appears, move slowly and keep the whole souvenir in view.</p>
+  </div>
 
-  <p class="hint"><b>iPhone or iPad:</b> opens in AR Quick Look. No app needed. Move the phone slowly over the table until the arena appears, then pinch to resize.<br>
-  <b>Android:</b> opens in Scene Viewer.<br>
-  <b>If the button does nothing:</b> <a class="ar-link" rel="ar" href="colosseum.usdz">Open the USDZ directly</a></p>
+  <h2>Preview without AR</h2>
+  <model-viewer src="gladiators.glb" autoplay camera-controls shadow-intensity="1" exposure="1.1" alt="Animated gladiators"></model-viewer>
 
-  <footer>Built in Blender by ODX Studio with Claude. Round two anchors the scene to the souvenir itself.</footer>
+  <h2>Test 01, the whole arena</h2>
+  <p>The first version, placed by tapping on any surface.</p>
+  <a class="btn" rel="ar" href="colosseum.usdz">Open the arena (iPhone)</a>
+
+  <footer>Built in Blender by ODX Studio with Claude.</footer>
 </div>
 </body>
 </html>
